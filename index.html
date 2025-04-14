@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Amor Marketing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/amor-marketing-logo.svg" alt="Amor Marketing Logo">
+            </div>
+            
+            <!-- Mobile menu toggle button -->
+            <button type="button" id="mobileMenuToggle" class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="nav-menu">
+                <a href="#">HOME</a>
+                <a href="#">SERVICES</a>
+                <a href="#">TEAM</a>
+                <a href="#">LOVE AT WORK</a>
+                <a href="#">PORTFOLIO</a>
+            </nav>
+            
+            <a href="#" class="contact-btn">CONTACT</a>
+        </div>
+        
+        <div class="contact-form-container">
+            <div class="form-header">
+                <h1>Intake</h1>
+                <div class="footer-logo">Amor<br>Marketing</div>
+            </div>
+            
+            <div class="form-content">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="firstName" placeholder="First" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="lastName" placeholder="Last" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>(Opt) Business Name</label>
+                        <input type="text" id="businessName" placeholder="Your business' name">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="Your preferred email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="phone" placeholder="Your preferred phone number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="message" placeholder="Your inquiry" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>(Opt) File</label>
+                        <input type="file" id="fileUpload" style="display: none;">
+                        <button type="button" id="uploadBtn" class="upload-btn">Upload</button>
+                        <span id="fileName" class="file-name"></span>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-send">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
