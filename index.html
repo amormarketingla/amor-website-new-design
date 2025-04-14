@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Amor Marketing</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- Add Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Main background image that sits under everything -->
-    <div class="site-background"></div>
+    <!-- Main background is now applied via CSS to body::before, so we can remove this div -->
+    <!-- <div class="site-background"></div> -->
     
     <!-- Main content container -->
     <div class="container">
         <div class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <img src="images/amor-marketing-logo.svg" alt="Amor Marketing Logo">
-            </div>
+            </a>
             
             <!-- Mobile menu toggle button -->
             <button type="button" id="mobileMenuToggle" class="mobile-menu-toggle">
@@ -86,7 +87,7 @@
                     </div>
                     
                     <div class="btn-container">
-                        <button type="submit" class="btn btn-send">Send</button>
+                        <button type="submit" class="btn-send">Send</button>
                     </div>
                 </form>
             </div>
