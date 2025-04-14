@@ -114,7 +114,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
     position: relative;
     z-index: 1;
 }
@@ -126,11 +125,17 @@ body {
     align-items: center;
     padding: 20px 0;
     max-width: 1200px;
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+    z-index: 100;
+    padding: 15px;
 }
 
 .logo {
     width: 50px;
     height: 50px;
+    opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,16 +146,17 @@ body {
 }
 
 .logo img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 
 .nav-menu {
     display: flex;
     background-color: var(--primary-color);
     border-radius: var(--border-radius-xl);
+    opacity: 0.9;
     padding: 20px 25px;
-    margin-left: -300px;
+    margin-left: -400px;
     box-shadow: var(--shadow-md);
 }
 
@@ -165,27 +171,19 @@ body {
     position: relative;
 }
 
-.nav-menu a:hover {
-    color: rgba(255, 255, 255, 0.8);
-}
-
+/* Update navigation hover effect to remove underline */
 .nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease;
+    content: none; /* Remove the underline effect */
 }
 
-.nav-menu a:hover::after {
-    width: 100%;
+.nav-menu a:hover {
+    color: rgba(255, 255, 255, 1); /* Brighter white on hover for highlighting */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Slight glow effect */
 }
 
 .contact-btn {
     background-color: var(--primary-color);
+    opacity: 0.9;
     color: var(--light-text);
     text-decoration: none;
     padding: 20px 25px;
@@ -244,6 +242,7 @@ body {
     z-index: 1;
 }
 
+/* Keep the original heading position */
 .form-header h1 {
     font-family: var(--script-font);
     font-weight: 500;
@@ -360,6 +359,7 @@ textarea {
     color: var(--secondary-text);
 }
 
+/* Fix for form footer logo */
 .footer-logo {
     position: absolute;
     bottom: 20px;
@@ -381,9 +381,108 @@ textarea {
     background-image: url('images/palm-shadow-overlay.png');
     background-size: cover;
     background-position: center;
-    opacity: 0.7;
+    opacity: 0.5;
     z-index: 9999;
     pointer-events: none;
+}
+
+/* Simplified Footer Styles */
+.footer {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 50px 0 20px;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.footer-column p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-column a:not(.social-link) {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:not(.social-link):hover {
+    color: var(--accent-color-turquoise);
+}
+
+.footer-column i {
+    margin-right: 10px;
+    color: var(--accent-color-turquoise);
+    width: 15px;
+    text-align: center;
+}
+
+/* Fixed social links styling */
+.social-links {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.social-link:hover {
+    background-color: var(--accent-color-turquoise);
+}
+
+.social-link i {
+    font-size: 14px;
+    color: var(--light-text);
+    margin: 0; /* Reset margin */
+    width: auto;
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive Styles */
@@ -405,7 +504,10 @@ textarea {
 @media (max-width: 768px) {
     .nav-container {
         padding: 15px;
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: var(--background-color);
     }
     
     .mobile-menu-toggle {
@@ -460,6 +562,7 @@ textarea {
         margin-left: 0;
     }
     
+    /* Adjust fixed heading for mobile */
     .form-header h1 {
         font-size: 70px;
         position: relative;
@@ -475,11 +578,33 @@ textarea {
         gap: 10px;
     }
     
+    /* Fixed footer logo positioning for mobile */
     .footer-logo {
         position: relative;
         margin-top: 20px;
+        text-align: center;
         bottom: auto;
         left: auto;
+    }
+    
+    /* Footer responsive adjustments */
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    .footer-column {
+        width: 100%;
+        padding: 0 15px 20px;
+    }
+    
+    /* Make social links look better on mobile */
+    .social-links {
+        justify-content: flex-start;
+    }
+    
+    .social-link {
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 }
 
@@ -511,6 +636,15 @@ textarea {
     }
     
     .btn-container {
+        justify-content: center;
+    }
+    
+    .footer {
+        padding: 40px 0 20px;
+    }
+    
+    /* Additional fixes for tiny screens */
+    .social-links {
         justify-content: center;
     }
 }
