@@ -1,22 +1,24 @@
-/* CSS Constants/Variables */
+/* Main stylesheet for Amor Marketing */
 :root {
-    /* Colors */
-    --primary-color: #004454; /* Darker teal to match image */
-    --primary-hover: #025e75; /* Slightly lighter for hover effects */
+    /* Brand colors */
+    --primary-color: #013C4A; /* Blue: HEX: #013C4A, RGB: 1 60 74, CMYK: 100 57 48 48 */
+    --primary-hover: #025e75; /* Lighter blue for hover states */
     --text-color: #333;
-    --light-text: white;
-    --background-color: #f0f0f0; /* Light gray background in image */
+    --light-text: #FFFFFF; /* White: HEX: #FFFFFF, RGB: 255 255 255, CMYK: 0 0 0 0 */
+    --background-color: #f0f0f0;
     --form-background: white;
     --border-color: #ccc;
-    --secondary-text: #666;
+    --accent-color-turquoise: #49B6A2; /* Turquoise: HEX: #49B6A2, RGB: 73 182 162, CMYK: 76 0 47 0 */
+    --accent-color-pink: #F7B9AD; /* Pink: HEX: #F7B9AD, RGB: 247 185 173, CMYK: 0 39 28 0 */
+    --accent-color-yellow: #E5A330; /* Yellow: HEX: #E5A330, RGB: 229 163 48, CMYK: 3 42 100 0 */
     
-    /* Font families */
+    /* Typography */
     --main-font: 'Poppins', sans-serif;
     --script-font: 'SloopScript', 'Script MT', 'Brush Script MT', cursive;
     
-    /* Sizes and spacing */
+    /* Border radius */
     --border-radius-sm: 3px;
-    --border-radius-md: 8px;  
+    --border-radius-md: 8px;
     --border-radius-lg: 10px;
     --border-radius-xl: 30px;
     --border-radius-full: 50px;
@@ -38,8 +40,54 @@
     font-display: swap;
 }
 
-/* Google Fonts import */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* Poppins font variants */
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
 
 * {
     margin: 0;
@@ -48,25 +96,16 @@
     font-family: var(--main-font);
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--background-color);
     position: relative;
     min-height: 100vh;
-}
-
-/* Background with the overlay */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/palm-shadow-overlay.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.7;
-    z-index: -2;
 }
 
 .container {
@@ -76,6 +115,8 @@ body::before {
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-container {
@@ -107,9 +148,9 @@ body::before {
 .nav-menu {
     display: flex;
     background-color: var(--primary-color);
-    border-radius: var(--border-radius-full);
-    padding: 12px 25px;
-    margin-left: -150px; /* Move menu to the left */
+    border-radius: var(--border-radius-xl);
+    padding: 20px 25px;
+    margin-left: -300px;
     box-shadow: var(--shadow-md);
 }
 
@@ -117,8 +158,8 @@ body::before {
     color: var(--light-text);
     text-decoration: none;
     margin: 0 15px;
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 300;
+    font-size: 12px;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     position: relative;
@@ -147,10 +188,10 @@ body::before {
     background-color: var(--primary-color);
     color: var(--light-text);
     text-decoration: none;
-    padding: 12px 25px;
+    padding: 20px 25px;
     border-radius: var(--border-radius-full);
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 300;
+    font-size: 12px;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
@@ -162,7 +203,6 @@ body::before {
     box-shadow: var(--shadow-lg);
 }
 
-/* Mobile menu toggle button */
 .mobile-menu-toggle {
     display: none;
     background: var(--primary-color);
@@ -184,7 +224,6 @@ body::before {
     transition: all 0.3s ease;
 }
 
-/* Form styling to match the first image exactly */
 .contact-form-container {
     background-color: var(--form-background);
     border-radius: var(--border-radius-lg);
@@ -196,22 +235,7 @@ body::before {
     position: relative;
     padding: 20px 40px 40px 40px;
     overflow: hidden;
-}
-
-/* Background pattern for the form */
-.contact-form-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/palm-shadow-overlay.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.15;
-    z-index: 0;
-    pointer-events: none;
+    z-index: 1;
 }
 
 .form-header {
@@ -265,12 +289,13 @@ input, textarea {
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(0, 68, 84, 0.1);
+    box-shadow: 0 0 0 2px rgba(1, 60, 74, 0.1);
 }
 
 textarea {
     height: 120px;
     resize: vertical;
+    resize: none
 }
 
 .form-row {
@@ -347,7 +372,21 @@ textarea {
     z-index: 1;
 }
 
-/* Responsive styles for navigation */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/palm-shadow-overlay.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Responsive Styles */
 @media (max-width: 1024px) {
     .nav-container {
         padding: 15px;
