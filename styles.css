@@ -102,6 +102,22 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Main background that sits under everything */
+.site-background {
+    background-image: url('images/bg-texture.jpg');
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: -2; /* Lower z-index to be under everything */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Add site-wide background */
 body {
     background-color: var(--background-color);
     position: relative;
@@ -171,16 +187,16 @@ body {
     position: relative;
 }
 
-/* Update navigation hover effect to remove underline */
-.nav-menu a::after {
-    content: none; /* Remove the underline effect */
-}
-
+/* Enhanced nav hover effect */
 .nav-menu a:hover {
-    color: rgba(255, 255, 255, 1); /* Brighter white on hover for highlighting */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Slight glow effect */
+    color: #ffffff; /* Brighter white */
+    font-weight: 400; /* Slightly bolder on hover */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
+                 0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
+    transform: translateY(-1px); /* Subtle lift effect */
 }
 
+/* Updated contact button styles to match nav hover effect */
 .contact-btn {
     background-color: var(--primary-color);
     opacity: 0.9;
@@ -199,6 +215,10 @@ body {
     background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    color: #ffffff; /* Brighter white */
+    font-weight: 400; /* Slightly bolder on hover */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
+                 0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
 }
 
 .mobile-menu-toggle {
@@ -359,12 +379,11 @@ textarea {
     color: var(--secondary-text);
 }
 
-/* Fix for form footer logo */
+/* Updated footer logo with bold "Amor" */
 .footer-logo {
     position: absolute;
     bottom: 20px;
     left: 10px;
-    font-weight: bold;
     color: var(--text-color);
     font-size: 14px;
     line-height: 1.2;
@@ -372,6 +391,11 @@ textarea {
     z-index: 1;
 }
 
+.footer-logo .bold {
+    font-weight: 700;
+}
+
+/* Modify overlay to work with new background */
 .background-overlay {
     position: fixed;
     top: 0;
@@ -382,7 +406,7 @@ textarea {
     background-size: cover;
     background-position: center;
     opacity: 0.5;
-    z-index: 9999;
+    z-index: -1; /* Just above the main background */
     pointer-events: none;
 }
 
@@ -393,6 +417,8 @@ textarea {
     color: var(--light-text);
     padding: 50px 0 20px;
     margin-top: auto;
+    position: relative;
+    z-index: 3; /* Ensure footer is above the overlay */
 }
 
 .footer-container {
@@ -501,35 +527,45 @@ textarea {
     }
 }
 
+/* For screens <= 768px */
 @media (max-width: 768px) {
     .nav-container {
         padding: 15px;
         position: sticky;
         top: 0;
         z-index: 100;
-        background-color: var(--background-color);
+        background-color: rgba(240, 240, 240, 0.8);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 70px;
     }
     
     .mobile-menu-toggle {
         display: block;
+        /* Center the hamburger menu button */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+        z-index: 101;
     }
     
     .nav-menu {
-        position: absolute;
+        position: fixed;
         top: 75px;
-        left: 0;
-        right: 0;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
         flex-direction: column;
         align-items: center;
         background-color: var(--primary-color);
         border-radius: var(--border-radius-lg);
         padding: 20px;
-        margin: 0 auto;
-        width: 90%;
-        max-width: 300px;
+        margin: 0;
+        width: 85%;
+        max-width: 280px;
         box-shadow: var(--shadow-md);
-        z-index: 10;
-        transform: translateY(-20px);
+        z-index: 99;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -538,7 +574,7 @@ textarea {
     .nav-menu.active {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
+        transform: translateX(-50%) translateY(0);
     }
     
     .nav-menu a {
@@ -548,8 +584,17 @@ textarea {
         text-align: center;
     }
     
-    .nav-menu a::after {
-        bottom: 0;
+    .contact-btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        position: absolute;
+        left: 15px;
+        top: 15px;
     }
     
     .contact-form-container {
@@ -608,23 +653,45 @@ textarea {
     }
 }
 
+/* For screens <= 480px - maintain the same menu positioning */
 @media (max-width: 480px) {
     .container {
         padding: 15px;
     }
     
     .nav-container {
-        flex-wrap: wrap;
-        justify-content: space-between;
+        min-height: 70px; /* Ensure container height for absolute positioning */
+    }
+    
+    /* Keep hamburger menu centered */
+    .mobile-menu-toggle {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+    }
+    
+    /* Keep the menu centered when opened */
+    .nav-menu {
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        width: 85%;
+        max-width: 280px;
+    }
+    
+    .nav-menu.active {
+        transform: translateX(-50%) translateY(0);
     }
     
     .logo {
-        margin-right: auto;
+        left: 15px;
+        top: 15px;
     }
     
     .contact-btn {
         padding: 8px 15px;
         font-size: 13px;
+        right: 15px;
+        top: 15px;
     }
     
     .contact-form-container {
@@ -646,5 +713,18 @@ textarea {
     /* Additional fixes for tiny screens */
     .social-links {
         justify-content: center;
+    }
+}
+
+/* Additional fine-tuning for extra small screens */
+@media (max-width: 360px) {
+    .nav-menu {
+        width: 90%;
+        max-width: 260px;
+    }
+    
+    .contact-btn {
+        padding: 6px 12px;
+        font-size: 12px;
     }
 }
