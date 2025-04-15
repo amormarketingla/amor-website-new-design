@@ -78,7 +78,6 @@ body::before {
     z-index: -1;
 }
 
-/* Add site-wide background */
 body {
     background-color: var(--background-color);
     position: relative;
@@ -109,7 +108,6 @@ body {
     padding: 15px;
 }
 
-/* Modified: Added border-radius to logo */
 .logo {
     width: 50px;
     height: 50px;
@@ -121,7 +119,7 @@ body {
     border-radius: var(--border-radius-md);
     padding: 10px;
     box-shadow: var(--shadow-sm);
-    border-radius: 10px; /* Added specific border-radius to match image */
+    border-radius: 10px;
 }
 
 .logo img {
@@ -129,7 +127,6 @@ body {
     height: 35px;
 }
 
-/* Modified: Added border-radius to nav-menu */
 .nav-menu {
     display: flex;
     background-color: var(--primary-color);
@@ -138,7 +135,7 @@ body {
     padding: 20px 25px;
     margin-left: -400px;
     box-shadow: var(--shadow-md);
-    border-radius: 30px; /* Added specific border-radius to match image */
+    border-radius: 30px;
 }
 
 .nav-menu a {
@@ -152,16 +149,13 @@ body {
     position: relative;
 }
 
-/* Modified: Removed translateY transform from nav hover effect */
 .nav-menu a:hover {
     color: #ffffff; /* Brighter white */
     font-weight: 400; /* Slightly bolder on hover */
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
                  0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
-    /* Removed transform: translateY(-1px); */
 }
 
-/* Modified: Updated contact button border-radius and hover effect */
 .contact-btn {
     background-color: var(--primary-color);
     opacity: 0.9;
@@ -174,13 +168,11 @@ body {
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
-    border-radius: 30px; /* Added specific border-radius to match image */
+    border-radius: 30px;
 }
 
-/* Modified: Removed translateY transform from contact button hover */
 .contact-btn:hover {
     background-color: var(--primary-hover);
-    /* Removed transform: translateY(-2px); */
     box-shadow: var(--shadow-lg);
     color: #ffffff; /* Brighter white */
     font-weight: 400; /* Slightly bolder on hover */
@@ -346,7 +338,6 @@ textarea {
     color: var(--secondary-text);
 }
 
-/* Updated footer logo with bold "Amor" */
 .footer-logo {
     position: absolute;
     bottom: 0px;
@@ -362,7 +353,7 @@ textarea {
     font-weight: 700;
 }
 
-/* Modify overlay to work with new background */
+/* Overlay to work with background */
 .background-overlay {
     position: fixed;
     top: 0;
@@ -436,7 +427,6 @@ textarea {
     text-align: center;
 }
 
-/* Fixed social links styling */
 .social-links {
     display: flex;
     margin-top: 15px;

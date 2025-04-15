@@ -89,11 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 file: fileUpload.files[0] ? fileUpload.files[0].name : null
             };
             
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll just log it to console
             console.log('Form submitted with the following data:', formData);
             
-            // Show confirmation (in a real application, you'd wait for server response)
             alert('Thank you for your message! We will get back to you soon.');
             
             // Reset the form
