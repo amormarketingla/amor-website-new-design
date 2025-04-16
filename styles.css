@@ -16,13 +16,6 @@
     --main-font: 'Poppins', sans-serif;
     --script-font: 'SloopScript', 'Script MT', 'Brush Script MT', cursive;
     
-    /* Border radius */
-    --border-radius-sm: 3px;
-    --border-radius-md: 8px;
-    --border-radius-lg: 10px;
-    --border-radius-xl: 30px;
-    --border-radius-full: 50px;
-    
     /* Shadows */
     --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -116,7 +109,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--primary-color);
-    border-radius: var(--border-radius-md);
     padding: 10px;
     box-shadow: var(--shadow-sm);
     border-radius: 10px;
@@ -130,28 +122,28 @@ body {
 .nav-menu {
     display: flex;
     background-color: var(--primary-color);
-    border-radius: var(--border-radius-xl);
+    border-radius: 18px;
     opacity: 0.9;
     padding: 20px 25px;
-    margin-left: -400px;
+    margin-left: -400px; 
     box-shadow: var(--shadow-md);
-    border-radius: 30px;
+    min-width: 550px;
+    justify-content: center;
 }
 
 .nav-menu a {
     color: var(--light-text);
     text-decoration: none;
     margin: 0 15px;
-    font-weight: 300;
-    font-size: 12px;
-    letter-spacing: 0.5px;
+    font-weight: lighter;
+    font-size: 14px;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .nav-menu a:hover {
-    color: #ffffff; /* Brighter white */
-    font-weight: 400; /* Slightly bolder on hover */
+    color: #ffffff;
+    font-weight: bold;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
                  0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
 }
@@ -162,20 +154,18 @@ body {
     color: var(--light-text);
     text-decoration: none;
     padding: 20px 25px;
-    border-radius: var(--border-radius-full);
     font-weight: 300;
     font-size: 12px;
-    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
-    border-radius: 30px;
+    border-radius: 18px;
 }
 
 .contact-btn:hover {
     background-color: var(--primary-hover);
     box-shadow: var(--shadow-lg);
-    color: #ffffff; /* Brighter white */
-    font-weight: 400; /* Slightly bolder on hover */
+    color: #ffffff;
+    font-weight: bold; 
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
                  0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
 }
@@ -184,7 +174,7 @@ body {
     display: none;
     background: var(--primary-color);
     border: none;
-    border-radius: var(--border-radius-md);
+    border-radius: 8px;
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -305,7 +295,7 @@ textarea {
     background-color: transparent;
     border: 1.5px solid var(--primary-color);
     color: var(--primary-color);
-    border-radius: var(--border-radius-sm);
+    border-radius: 3px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
@@ -314,12 +304,17 @@ textarea {
     height: 35px;
 }
 
+.btn-send:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
 .upload-btn {
     display: inline-block;
     background-color: transparent;
     border: 1.5px solid var(--primary-color);
     color: var(--primary-color);
-    border-radius: var(--border-radius-sm);
+    border-radius: 3px;
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -343,7 +338,7 @@ textarea {
     bottom: 0px;
     left: 0px;
     color: var(--text-color);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.2;
     font-family: var(--main-font);
     z-index: 1;
@@ -397,7 +392,6 @@ textarea {
     font-size: 16px;
     margin-bottom: 15px;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .footer-column p {
@@ -476,6 +470,7 @@ textarea {
     
     .nav-menu {
         margin-left: 0;
+        min-width: auto;
     }
     
     .nav-menu a {
@@ -515,11 +510,12 @@ textarea {
         flex-direction: column;
         align-items: center;
         background-color: var(--primary-color);
-        border-radius: var(--border-radius-lg);
+        border-radius: 18px;
         padding: 20px;
         margin: 0;
         width: 85%;
         max-width: 280px;
+        min-width: auto;
         box-shadow: var(--shadow-md);
         z-index: 99;
         opacity: 0;
@@ -545,6 +541,7 @@ textarea {
         right: 15px;
         top: 15px;
         padding: 10px 15px;
+        border-radius: 18px;
     }
     
     .logo {
