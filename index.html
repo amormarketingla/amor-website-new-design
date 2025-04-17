@@ -6,19 +6,15 @@
     <title>Contact - Amor Marketing</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Add Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
-    <!-- Main content container -->
     <div class="container">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <img src="images/amor-marketing-logo.svg" alt="Amor Marketing Logo">
             </a>
             
-            <!-- Mobile menu toggle button -->
             <button type="button" id="mobileMenuToggle" class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
@@ -78,9 +74,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>(Opt) File</label>
-                        <input type="file" id="fileUpload" style="display: none;">
-                        <button type="button" id="uploadBtn" class="upload-btn">Upload</button>
+                        <div class="file-upload-container">
+                            <label>(Opt) File</label>
+                            <div class="file-upload-controls">
+                                <input type="file" id="fileUpload" style="display: none;">
+                                <button type="button" id="uploadBtn" class="upload-btn">Upload</button>
+                            </div>
+                        </div>
                         <span id="fileName" class="file-name"></span>
                     </div>
                     
@@ -92,7 +92,6 @@
         </div>
     </div>
     
-    <!-- Simplified Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
@@ -128,7 +127,6 @@
         </div>
     </footer>
     
-    <!-- Background overlay positioned at the end of body to appear above content -->
     <div class="background-overlay"></div>
 
     <script src="script.js"></script>

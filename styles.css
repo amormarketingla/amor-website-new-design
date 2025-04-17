@@ -1,30 +1,21 @@
-/* Main stylesheet for Amor Marketing */
 :root {
-    /* Brand colors */
-    --primary-color: #013C4A; /* Blue: HEX: #013C4A, RGB: 1 60 74, CMYK: 100 57 48 48 */
-    --primary-hover: #025e75; /* Lighter blue for hover states */
+    --primary-color: #013C4A;
+    --primary-hover: #025e75;
     --text-color: #333;
-    --light-text: #FFFFFF; /* White: HEX: #FFFFFF, RGB: 255 255 255, CMYK: 0 0 0 0 */
+    --light-text: #FFFFFF;
     --background-color: #f0f0f0;
     --form-background: white;
     --border-color: #ccc;
-    --accent-color-turquoise: #49B6A2; /* Turquoise: HEX: #49B6A2, RGB: 73 182 162, CMYK: 76 0 47 0 */
-    --accent-color-pink: #F7B9AD; /* Pink: HEX: #F7B9AD, RGB: 247 185 173, CMYK: 0 39 28 0 */
-    --accent-color-yellow: #E5A330; /* Yellow: HEX: #E5A330, RGB: 229 163 48, CMYK: 3 42 100 0 */
+    --accent-color-turquoise: #49B6A2;
+    --accent-color-pink: #F7B9AD;
+    --accent-color-yellow: #E5A330;
     
-    /* Typography */
     --main-font: 'Poppins', sans-serif;
     --script-font: 'SloopScript', 'Script MT', 'Brush Script MT', cursive;
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* Font declarations */
 @font-face {
     font-family: 'SloopScript';
     src: url('fonts/SloopScript.otf') format('opentype'),
@@ -48,14 +39,12 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Background using a pseudo-element for proper opacity */
 body {
     background-color: var(--background-color);
     position: relative;
     min-height: 100vh;
 }
 
-/* Use pseudo-element for background with opacity */
 body::before {
     content: '';
     position: absolute;
@@ -64,10 +53,10 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: url('images/bg-texture.jpg');
-    background-size: 100% auto; /* Fill width, maintain height aspect ratio */
-    background-repeat: repeat-y; /* Repeat vertically if needed */
+    background-size: 100% auto;
+    background-repeat: repeat-y;
     background-position: top center;
-    opacity: 0.2;
+    opacity: 0.25;
     z-index: -1;
 }
 
@@ -102,15 +91,15 @@ body {
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     opacity: 0.9;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--primary-color);
     padding: 10px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
 
@@ -126,9 +115,11 @@ body {
     opacity: 0.9;
     padding: 20px 25px;
     margin-left: -400px; 
-    box-shadow: var(--shadow-md);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     min-width: 550px;
     justify-content: center;
+    height: 60px;
+    align-items: center;
 }
 
 .nav-menu a {
@@ -145,7 +136,7 @@ body {
     color: #ffffff;
     font-weight: bold;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
-                 0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
+                 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .contact-btn {
@@ -153,21 +144,24 @@ body {
     opacity: 0.9;
     color: var(--light-text);
     text-decoration: none;
-    padding: 20px 25px;
+    padding: 0 25px;
     font-weight: 300;
     font-size: 12px;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-md);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     border-radius: 18px;
+    height: 60px;
+    display: flex;
+    align-items: center;
 }
 
 .contact-btn:hover {
     background-color: var(--primary-hover);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.35);
     color: #ffffff;
     font-weight: bold; 
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 
-                 0 0 20px rgba(255, 255, 255, 0.5); /* Glowing effect */
+                 0 0 20px rgba(255, 255, 255, 0.5); 
 }
 
 .mobile-menu-toggle {
@@ -179,7 +173,7 @@ body {
     height: 40px;
     cursor: pointer;
     position: relative;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu-toggle span {
@@ -192,16 +186,21 @@ body {
 }
 
 .contact-form-container {
-    background-color: rgba(255, 255, 255, 0.8); /* White with 0.8 opacity (20% transparent) */
     width: 100%;
     max-width: 900px;
     margin: 40px auto;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     display: flex;
     position: relative;
-    padding: 20px 40px 25px 40px;
+    padding: 20px 40px 20px 30px;
     overflow: hidden;
     z-index: 1;
+    background-image: url('images/paper-texture.jpeg');
+    background-color: rgba(255, 255, 255, 0.7);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #contactForm {
@@ -214,7 +213,6 @@ body {
     z-index: 1;
 }
 
-/* Keep the original heading position */
 .form-header h1 {
     font-family: var(--script-font);
     font-weight: 500;
@@ -222,8 +220,8 @@ body {
     font-size: 140px;
     line-height: 0.8;
     position: absolute;
-    left: 50px;
-    top: 30px;
+    left: 70px;
+    top: 40px;
     text-align: left;
     writing-mode: vertical-lr;
     transform: rotate(180deg);
@@ -295,7 +293,7 @@ textarea {
     background-color: transparent;
     border: 1.5px solid var(--primary-color);
     color: var(--primary-color);
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 500;
@@ -309,17 +307,32 @@ textarea {
     color: var(--light-text);
 }
 
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 25px;
+    margin-bottom: 5px;
+}
+
+.file-upload-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .upload-btn {
     display: inline-block;
     background-color: transparent;
     border: 1.5px solid var(--primary-color);
     color: var(--primary-color);
-    border-radius: 3px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
-    width: 90px;
+    width: 100px;
     height: 25px;
+    margin-left: 0;
 }
 
 .upload-btn:hover {
@@ -337,7 +350,7 @@ textarea {
     position: absolute;
     bottom: 0px;
     left: 0px;
-    color: var(--text-color);
+    color: var(--primary-color);
     font-size: 16px;
     line-height: 1.2;
     font-family: var(--main-font);
@@ -348,7 +361,6 @@ textarea {
     font-weight: 700;
 }
 
-/* Overlay to work with background */
 .background-overlay {
     position: fixed;
     top: 0;
@@ -359,11 +371,10 @@ textarea {
     background-size: cover;
     background-position: center;
     opacity: 0.5;
-    z-index: 999; /* High z-index to be above all content */
-    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 999;
+    pointer-events: none;
 }
 
-/* Simplified Footer Styles */
 .footer {
     width: 100%;
     background-color: var(--primary-color);
@@ -371,7 +382,7 @@ textarea {
     padding: 50px 0 20px;
     margin-top: auto;
     position: relative;
-    z-index: 3; /* Ensure footer is above the overlay */
+    z-index: 3;
 }
 
 .footer-container {
@@ -448,7 +459,7 @@ textarea {
 .social-link i {
     font-size: 14px;
     color: var(--light-text);
-    margin: 0; /* Reset margin */
+    margin: 0;
     width: auto;
     text-align: center;
 }
@@ -462,7 +473,6 @@ textarea {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Responsive Styles */
 @media (max-width: 1024px) {
     .nav-container {
         padding: 15px;
@@ -479,7 +489,6 @@ textarea {
     }
 }
 
-/* For screens <= 768px */
 @media (max-width: 768px) {
     .nav-container {
         padding: 15px;
@@ -494,12 +503,12 @@ textarea {
     
     .mobile-menu-toggle {
         display: block;
-        /* Center the hamburger menu button */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         top: 15px;
         z-index: 101;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
     }
     
     .nav-menu {
@@ -516,11 +525,12 @@ textarea {
         width: 85%;
         max-width: 280px;
         min-width: auto;
-        box-shadow: var(--shadow-md);
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
         z-index: 99;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
+        height: auto;
     }
     
     .nav-menu.active {
@@ -540,11 +550,16 @@ textarea {
         position: absolute;
         right: 15px;
         top: 15px;
-        padding: 10px 15px;
+        padding: 0 15px;
         border-radius: 18px;
+        height: 40px;
+        display: flex;
+        align-items: center;
     }
     
     .logo {
+        width: 50px;
+        height: 50px;
         position: absolute;
         left: 15px;
         top: 15px;
@@ -560,7 +575,6 @@ textarea {
         margin-left: 0;
     }
     
-    /* Adjust fixed heading for mobile */
     .form-header h1 {
         font-size: 70px;
         position: relative;
@@ -576,7 +590,6 @@ textarea {
         gap: 10px;
     }
     
-    /* Fixed footer logo positioning for mobile */
     .footer-logo {
         position: relative;
         margin-top: 20px;
@@ -585,7 +598,6 @@ textarea {
         left: auto;
     }
     
-    /* Footer responsive adjustments */
     .footer-container {
         flex-direction: column;
     }
@@ -595,7 +607,6 @@ textarea {
         padding: 0 15px 20px;
     }
     
-    /* Make social links look better on mobile */
     .social-links {
         justify-content: flex-start;
     }
@@ -604,26 +615,36 @@ textarea {
         margin-right: 10px;
         margin-bottom: 10px;
     }
+    
+    .file-upload-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .file-upload-controls {
+        margin-top: 5px;
+    }
+    
+    .upload-btn {
+        margin-left: 0;
+    }
 }
 
-/* For screens <= 480px - maintain the same menu positioning */
 @media (max-width: 480px) {
     .container {
         padding: 15px;
     }
     
     .nav-container {
-        min-height: 70px; /* Ensure container height for absolute positioning */
+        min-height: 70px;
     }
     
-    /* Keep hamburger menu centered */
     .mobile-menu-toggle {
         left: 50%;
         transform: translateX(-50%);
         top: 15px;
     }
     
-    /* Keep the menu centered when opened */
     .nav-menu {
         left: 50%;
         transform: translateX(-50%) translateY(-20px);
@@ -641,10 +662,11 @@ textarea {
     }
     
     .contact-btn {
-        padding: 8px 15px;
+        padding: 0 15px;
         font-size: 13px;
         right: 15px;
         top: 15px;
+        height: 36px;
     }
     
     .contact-form-container {
@@ -663,13 +685,11 @@ textarea {
         padding: 40px 0 20px;
     }
     
-    /* Additional fixes for tiny screens */
     .social-links {
         justify-content: center;
     }
 }
 
-/* Additional fine-tuning for extra small screens */
 @media (max-width: 360px) {
     .nav-menu {
         width: 90%;
@@ -677,7 +697,7 @@ textarea {
     }
     
     .contact-btn {
-        padding: 6px 12px;
+        padding: 0 12px;
         font-size: 12px;
     }
 }
