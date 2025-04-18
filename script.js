@@ -98,4 +98,31 @@ document.addEventListener('DOMContentLoaded', function() {
             fileName.textContent = '';
         });
     }
+    
+    // Clone footer logo and place it next to Send button for mobile views
+    const moveFooterLogoForMobile = function() {
+        const footerLogo = document.querySelector('.footer-logo');
+        const btnContainer = document.querySelector('.btn-container');
+        
+        if (footerLogo && btnContainer) {
+            // Only add the clone if it doesn't exist and we're in mobile view
+            if (window.innerWidth <= 768 && !document.querySelector('.btn-container .footer-logo')) {
+                const footerLogoClone = footerLogo.cloneNode(true);
+                btnContainer.insertBefore(footerLogoClone, btnContainer.firstChild);
+            } 
+            // Remove the clone if we're back to desktop view
+            else if (window.innerWidth > 768 && document.querySelector('.btn-container .footer-logo')) {
+                const mobileFooterLogo = document.querySelector('.btn-container .footer-logo');
+                if (mobileFooterLogo) {
+                    mobileFooterLogo.remove();
+                }
+            }
+        }
+    };
+    
+    // Run once on page load
+    moveFooterLogoForMobile();
+    
+    // Also run when window is resized
+    window.addEventListener('resize', moveFooterLogoForMobile);
 });

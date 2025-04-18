@@ -60,12 +60,6 @@ body::before {
     z-index: -1;
 }
 
-body {
-    background-color: var(--background-color);
-    position: relative;
-    min-height: 100vh;
-}
-
 .container {
     width: 100%;
     min-height: 100vh;
@@ -253,6 +247,8 @@ input, textarea {
     border: 1px solid var(--border-color);
     font-size: 14px;
     font-family: var(--main-font);
+    color: var(--primary-color); /* Changed text color to blue */
+    background-color: transparent; /* Changed background to transparent */
 }
 
 input:focus, textarea:focus {
@@ -352,7 +348,7 @@ textarea {
     left: 0px;
     color: var(--primary-color);
     font-size: 16px;
-    line-height: 1.2;
+    line-height: 0.8; /* Changed from 1.2 to 0.8 */
     font-family: var(--main-font);
     z-index: 1;
 }
@@ -546,23 +542,23 @@ textarea {
         text-align: center;
     }
     
+    .logo {
+        width: 40px; /* Consistent height with others */
+        height: 40px; /* Same height as mobile-menu-toggle */
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+    
     .contact-btn {
         position: absolute;
         right: 15px;
         top: 15px;
         padding: 0 15px;
         border-radius: 18px;
-        height: 40px;
+        height: 40px; /* Same height as mobile-menu-toggle and logo */
         display: flex;
         align-items: center;
-    }
-    
-    .logo {
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        left: 15px;
-        top: 15px;
     }
     
     .contact-form-container {
@@ -585,44 +581,40 @@ textarea {
         margin-bottom: 30px;
     }
     
+    #contactForm {
+        padding-top: 0;
+    }
+    
     .form-row {
         flex-direction: column;
         gap: 10px;
     }
     
-    .footer-logo {
+    .form-header .footer-logo {
+        display: none;
+    }
+    
+    .btn-container {
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .btn-container .footer-logo {
         position: relative;
-        margin-top: 20px;
-        text-align: center;
         bottom: auto;
         left: auto;
-    }
-    
-    .footer-container {
-        flex-direction: column;
-    }
-    
-    .footer-column {
-        width: 100%;
-        padding: 0 15px 20px;
-    }
-    
-    .social-links {
-        justify-content: flex-start;
-    }
-    
-    .social-link {
-        margin-right: 10px;
-        margin-bottom: 10px;
+        display: block;
     }
     
     .file-upload-container {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; 
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
     }
     
     .file-upload-controls {
-        margin-top: 5px;
+        margin-top: 0; /* Remove top margin */
     }
     
     .upload-btn {
@@ -657,6 +649,8 @@ textarea {
     }
     
     .logo {
+        width: 36px;
+        height: 36px;
         left: 15px;
         top: 15px;
     }
@@ -666,6 +660,11 @@ textarea {
         font-size: 13px;
         right: 15px;
         top: 15px;
+        height: 36px; /* Match logo height */
+    }
+    
+    .mobile-menu-toggle {
+        width: 36px;
         height: 36px;
     }
     
@@ -675,10 +674,6 @@ textarea {
     
     .form-header h1 {
         font-size: 60px;
-    }
-    
-    .btn-container {
-        justify-content: center;
     }
     
     .footer {
