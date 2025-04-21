@@ -517,9 +517,9 @@ textarea {
 
 @media (max-width: 768px) {
     .nav-container {
-        padding: 15px;
+        padding: 20px;
         position: fixed;
-        top: 10px;
+        top: 0;
         left: 0;
         width: 100%;
         z-index: 200;
