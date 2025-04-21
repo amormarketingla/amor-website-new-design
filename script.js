@@ -1,37 +1,52 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on mobile
+    const isMobile = function() {
+        return window.innerWidth <= 768;
+    };
+    
+    // Create mobile logo element
+    function createMobileLogo() {
+        if (isMobile()) {
+            const navContainer = document.querySelector('.nav-container');
+            if (navContainer && !document.querySelector('.mobile-logo')) {
+                const mobileLogo = document.createElement('div');
+                mobileLogo.className = 'mobile-logo';
+                mobileLogo.innerHTML = '<span class="bold">Amor</span><br>Marketing';
+                navContainer.insertBefore(mobileLogo, navContainer.firstChild);
+            }
+        }
+    }
+    
+    // Add contact button to mobile menu
+    function addContactToMenu() {
+        if (isMobile()) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu && !document.querySelector('.nav-contact-btn')) {
+                const contactBtn = document.createElement('a');
+                contactBtn.className = 'nav-contact-btn';
+                contactBtn.href = '#';
+                contactBtn.textContent = 'CONTACT';
+                navMenu.appendChild(contactBtn);
+            }
+        }
+    }
+    
     // Mobile menu functionality
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.querySelector('.nav-menu');
     
     if (mobileMenuToggle && navMenu) {
         mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            
-            // Toggle hamburger to X animation
-            const spans = this.querySelectorAll('span');
-            if (navMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navMenu.contains(event.target) && 
-                !mobileMenuToggle.contains(event.target) && 
-                navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
+            if (isMobile()) {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
                 
-                // Reset hamburger icon
-                const spans = mobileMenuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
+                // Toggle body scroll when menu is open
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             }
         });
         
@@ -39,14 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
+                if (isMobile()) {
                     navMenu.classList.remove('active');
-                    
-                    // Reset hamburger icon
-                    const spans = mobileMenuToggle.querySelectorAll('span');
-                    spans[0].style.transform = 'none';
-                    spans[1].style.opacity = '1';
-                    spans[2].style.transform = 'none';
+                    mobileMenuToggle.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
         });
@@ -99,30 +110,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Clone footer logo and place it next to Send button for mobile views
-    const moveFooterLogoForMobile = function() {
+    // Responsive layout adjustments
+    function handleResponsiveLayout() {
         const footerLogo = document.querySelector('.footer-logo');
         const btnContainer = document.querySelector('.btn-container');
         
         if (footerLogo && btnContainer) {
             // Only add the clone if it doesn't exist and we're in mobile view
-            if (window.innerWidth <= 768 && !document.querySelector('.btn-container .footer-logo')) {
+            if (isMobile() && !document.querySelector('.btn-container .footer-logo')) {
                 const footerLogoClone = footerLogo.cloneNode(true);
                 btnContainer.insertBefore(footerLogoClone, btnContainer.firstChild);
             } 
             // Remove the clone if we're back to desktop view
-            else if (window.innerWidth > 768 && document.querySelector('.btn-container .footer-logo')) {
+            else if (!isMobile() && document.querySelector('.btn-container .footer-logo')) {
                 const mobileFooterLogo = document.querySelector('.btn-container .footer-logo');
                 if (mobileFooterLogo) {
                     mobileFooterLogo.remove();
                 }
             }
         }
-    };
+        
+        // Create or remove mobile elements based on screen size
+        if (isMobile()) {
+            createMobileLogo();
+            addContactToMenu();
+        } else {
+            // Remove mobile elements if screen size increases
+            const mobileLogo = document.querySelector('.mobile-logo');
+            const navContactBtn = document.querySelector('.nav-contact-btn');
+            
+            if (mobileLogo) {
+                mobileLogo.remove();
+            }
+            
+            if (navContactBtn) {
+                navContactBtn.remove();
+            }
+            
+            // Reset any mobile menu states
+            navMenu.classList.remove('active');
+            if (mobileMenuToggle) {
+                mobileMenuToggle.classList.remove('active');
+            }
+            document.body.style.overflow = '';
+        }
+    }
     
     // Run once on page load
-    moveFooterLogoForMobile();
+    handleResponsiveLayout();
     
     // Also run when window is resized
-    window.addEventListener('resize', moveFooterLogoForMobile);
+    window.addEventListener('resize', function() {
+        handleResponsiveLayout();
+    });
 });
