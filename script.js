@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Mobile menu functionality
+    // Mobile menu functionality with staggered animation
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navMenu = document.querySelector('.nav-menu');
     
@@ -110,6 +110,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Handle scroll for mobile navigation
+    function handleScroll() {
+        if (isMobile()) {
+            const scrollPosition = window.scrollY;
+            const navContainer = document.querySelector('.nav-container');
+            
+            if (navContainer) {
+                if (scrollPosition > 20) {
+                    navContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                    navContainer.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                    navContainer.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                }
+            }
+        }
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
     // Responsive layout adjustments
     function handleResponsiveLayout() {
         const footerLogo = document.querySelector('.footer-logo');
@@ -158,9 +179,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Run once on page load
     handleResponsiveLayout();
+    handleScroll();
     
     // Also run when window is resized
     window.addEventListener('resize', function() {
         handleResponsiveLayout();
+        handleScroll();
     });
 });

@@ -256,6 +256,7 @@ input, textarea {
     color: var(--primary-color);
     background-color: transparent;
     transition: border 0.3s ease;
+    border-radius: 0;
 }
 
 input::placeholder, textarea::placeholder {
@@ -271,7 +272,7 @@ input:focus, textarea:focus {
 textarea {
     height: 120px;
     resize: vertical;
-    resize: none
+    resize: none;
 }
 
 .form-row {
@@ -526,8 +527,9 @@ textarea {
         justify-content: space-between;
         align-items: center;
         min-height: 80px;
-        background-color: transparent;
-        box-shadow: none;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(5px);
     }
     
     .logo {
@@ -577,7 +579,7 @@ textarea {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.98);
         margin: 0;
         padding: 80px 20px;
         box-shadow: none;
@@ -585,9 +587,10 @@ textarea {
         min-width: auto;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 150;
-        transform: translateY(-100%);
+        transform: translateY(-20%);
+        backdrop-filter: blur(10px);
     }
     
     .nav-menu.active {
@@ -603,6 +606,36 @@ textarea {
         position: relative;
         display: flex;
         align-items: center;
+        font-weight: 500;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    
+    .nav-menu.active a {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.2s;
+    }
+    
+    .nav-menu.active a:nth-child(2) {
+        transition-delay: 0.25s;
+    }
+    
+    .nav-menu.active a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+    
+    .nav-menu.active a:nth-child(4) {
+        transition-delay: 0.35s;
+    }
+    
+    .nav-menu.active a:nth-child(5) {
+        transition-delay: 0.4s;
+    }
+    
+    .nav-menu.active a:nth-child(6) {
+        transition-delay: 0.45s;
     }
     
     .nav-menu a::before {
