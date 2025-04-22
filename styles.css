@@ -186,11 +186,10 @@ body::before {
 }
 
 .contact-form-container {
-    width: 100%;
+    width: 90%;
     max-width: 900px;
     margin: 40px auto;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    display: flex;
+    box-shadow: -10.885px -3.628px 10.341px 1.814px rgba(0, 0, 0, 0.06), 9.978px 11.792px 6.35px 0px rgba(0, 0, 0, 0.02), 5.443px 6.35px 5.443px 0px rgba(0, 0, 0, 0.06), 2.721px 2.721px 3.628px 0px rgba(0, 0, 0, 0.10);    display: flex;
     position: relative;
     padding: 20px 40px 20px 30px;
     overflow: hidden;
