@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = true;
+---
+
+<Layout>
+  <div class="contact-form-container">
+    <div class="form-header">
+      <h1>Intake</h1>
+      <div class="footer-logo"><span class="bold">Amor</span><br />Marketing</div>
+    </div>
+
+    <div class="form-content">
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Name</label>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="firstName" placeholder="First" required />
+            </div>
+            <div class="form-group">
+              <input type="text" id="lastName" placeholder="Last" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>(Opt) Business Name</label>
+          <input type="text" id="businessName" placeholder="Your business' name" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Your preferred email" required />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" id="phone" placeholder="Your preferred phone number" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="message" placeholder="Your inquiry" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <div class="file-upload-container">
+            <label>(Opt) File</label>
+            <div class="file-upload-controls">
+              <input type="file" id="fileUpload" style="display: none;" />
+              <button type="button" id="uploadBtn" class="upload-btn">Upload</button>
+            </div>
+          </div>
+          <span id="fileName" class="file-name"></span>
+        </div>
+
+        <div class="btn-container">
+          <button type="submit" class="btn-send">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function initContactForm() {
+    // File upload functionality
+    const fileUpload = document.getElementById('fileUpload');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const fileName = document.getElementById('fileName');
+
+    if (uploadBtn && fileUpload && fileName) {
+      uploadBtn.addEventListener('click', function () {
+        fileUpload.click();
+      });
+
+      fileUpload.addEventListener('change', function () {
+        if (fileUpload.files.length > 0) {
+          fileName.textContent = fileUpload.files[0].name;
+        } else {
+          fileName.textContent = '';
+        }
+      });
+    }
+
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Get form values
+        const formData = {
+          firstName: document.getElementById('firstName').value,
+          lastName: document.getElementById('lastName').value,
+          businessName: document.getElementById('businessName').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          message: document.getElementById('message').value,
+          file: fileUpload.files[0] ? fileUpload.files[0].name : null,
+        };
+
+        console.log('Form submitted with the following data:', formData);
+
+        alert('Thank you for your message! We will get back to you soon.');
+
+        // Reset the form
+        contactForm.reset();
+        fileName.textContent = '';
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    initContactForm();
+  });
+  document.addEventListener('astro:after-swap', function () {
+    initContactForm();
+  });
+</script>
