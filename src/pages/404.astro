@@ -1,0 +1,59 @@
+---
+import '../assets/styles/global.css';
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = true;
+---
+
+<Layout>
+  <section class="flex flex-col gap-40 items-center justify-center w-full min-h-screen">
+    <div>
+      <h1 class="coming text-center text-[400px] -rotate-16 opacity-76 mix-blend-darken">Coming</h1>
+      <h1 class="soon text-center">Soon...</h1>
+    </div>
+    <div class="flex flex-row gap-4">
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl">Social Media</h2>
+        <div class="bg-black w-1 h-1 rounded"></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl">Graphic Design</h2>
+        <div class="bg-black w-1 h-1 rounded"></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl">Web Design</h2>
+        <div class="bg-black w-1 h-1 rounded"></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <h2 class="text-xl">Content Creation</h2>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .coming {
+      font-family: var(--script-font), sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      color: #13343f;
+      mix-blend-mode: plus-darker;
+      line-height: 75%;
+      -webkit-text-stroke-width: 0.83px;
+    }
+
+    .soon {
+      color: #13343f;
+      text-align: right;
+      font-family: var(--main-font), sans-serif;
+      font-size: 90px;
+      font-style: normal;
+      font-weight: 275;
+      line-height: 76%;
+      letter-spacing: 27px;
+    }
+
+    h2 {
+      font-family: var(--main-font), sans-serif;
+    }
+  </style>
+</Layout>
