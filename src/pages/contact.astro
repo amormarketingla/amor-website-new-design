@@ -90,27 +90,43 @@ export const prerender = true;
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
-      contactForm.addEventListener('submit', function (event) {
+      contactForm.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        // Get form values
-        const formData = {
-          firstName: document.getElementById('firstName').value,
-          lastName: document.getElementById('lastName').value,
-          businessName: document.getElementById('businessName').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          message: document.getElementById('message').value,
-          file: fileUpload.files[0] ? fileUpload.files[0].name : null,
-        };
+        // Crear un objeto FormData
+        const formData = new FormData();
+        formData.append('firstName', document.getElementById('firstName').value);
+        formData.append('lastName', document.getElementById('lastName').value);
+        formData.append('businessName', document.getElementById('businessName').value);
+        formData.append('email', document.getElementById('email').value);
+        formData.append('phone', document.getElementById('phone').value);
+        formData.append('message', document.getElementById('message').value);
 
-        console.log('Form submitted with the following data:', formData);
+        // Adjuntar archivo si existe
+        if (fileUpload.files[0]) {
+          formData.append('file', fileUpload.files[0]); // Adjunta el archivo como un binario
+        }
 
-        alert('Thank you for your message! We will get back to you soon.');
+        try {
+          // Realizar la solicitud POST usando el FormData
+          const response = await fetch('/api/mails/contacts', {
+            method: 'POST',
+            body: formData,
+          });
 
-        // Reset the form
-        contactForm.reset();
-        fileName.textContent = '';
+          // Procesar la respuesta del servidor
+          const result = await response.json();
+          console.log('Formulario enviado con éxito:', result);
+
+          alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+
+          // Reiniciar el formulario
+          contactForm.reset();
+          fileName.textContent = '';
+        } catch (error) {
+          console.error('Error al enviar el formulario:', error);
+          alert('Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.');
+        }
       });
     }
   }
